@@ -164,6 +164,6 @@ public void 중복확인() throws Exception {
 
 
 
-**5. **
+**6. **
 
 
