@@ -6,6 +6,15 @@
    
   
 <br></br>  
+<br></br>
+
+
+
+
+
+
+
+
 **2. 타임 리프의 meta 태그**
   
    - http-equiv="항목명"
@@ -26,6 +35,16 @@
     ex) <meta name="Date" content="2021-07-20T07:45:37+09:00" /> 제작 날짜 표시
     
 <br></br>
+<br></br>
+
+
+
+
+
+
+
+
+
 
 **3. 필드 주입 vs 생성자 주입**
 
@@ -59,8 +78,92 @@ public class Service {
 생성자 주입을 통해, 변경 불가능한 안전한 객체 생성이 가능하고,  'final' 키워드를 추가하면 컴파일 시점에 memberRepository를 설정하지 않은 오류를 체크할 수 있다.
 
 <br></br>
+<br></br>
 
 
-**4. @RequiredargsConstructor 의 기능**
+
+
+
+
+
+
+**4. @RequiredArgsConstructor 의 기능**
+
+: 생성자 주입의 코드처럼 생성자를 만들기 번거로울때, 이를 보완하기 위해 롬복의 @RequiredArgsConstructor를 사용하면 된다.
+
+- @RequiredArgsConstructor : final이 붙거나 @NotNull이 붙은 필드의 생성자를 자동 생성해주는 롬복의 어노테이션이다.
+
+<기존 생성자 주입>
+
+```java
+@Service
+public class Service {
+
+    @Autowired  // 생성자가 하나면 생략가능
+    private final MemberRepository memberRepository;
+    
+    public Service(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+    
+}
+```
+
+<@RequiredArgsConstructor사용 후>
+```java
+@Service
+@RequiredArgsConstructor
+public class Service {
+
+    private final MemberRepository memberRepository;
+    
+}
+```
+
+<br></br>
+<br></br>
+
+
+
+
+
+
+**5. @Test (expected = Excpetion 클래스명 )**
+```java
+
+@Test(expected = IllegalStateException.class)
+public void 중복확인() throws Exception {
+    
+    // Given
+    Member member1 = new Member();
+    member1.setName("youngseon");
+    
+    Member member2 = new Member();
+    member2.setName("youngseon");
+    
+    //When
+    memberService.join(member1);
+    memberService.join(member2);
+    
+    /**
+    여기서 IllegalStateException이 터져 테스트는 pass된 채로 테스트가 종료된다.
+    */
+    
+    //Then 
+    
+    fail("예외가 발생해야 한다");
+    /**
+    예외가 터지지 않고 fail까지 넘어오면, fail이 "예외가 발생해야 한다" 라는 문구를 보여주며 테스트를 fail 시킨다.
+    */
+}
+```
+
+
+<br></br>
+<br></br>
+
+
+
+**5. **
 
 
