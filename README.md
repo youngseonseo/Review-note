@@ -28,3 +28,22 @@
 <br></br>
 
 **3.**
+
+   필드 주입 vs 생성자  주입
+   
+   - 필드 주입
+       ex) public class Service {
+               @Autowired
+               MemberRepository memberRepository;
+           }
+
+   - 생성자 주입 
+'''java
+public class Service {
+    private final MemberRepository memberRepository;
+               
+    public Service(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+}
+'''
