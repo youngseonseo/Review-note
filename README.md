@@ -20,30 +20,47 @@
    - name="정보이름" 
       : 몇개의 메타 정보 이름을 지정할 수 있으며, 지정하지 않으면 http-equiv와 같은 기능을 한다.
      
-     
+    
     ex) <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 컨텐츠 타입정보 표시
     
     ex) <meta name="Date" content="2021-07-20T07:45:37+09:00" /> 제작 날짜 표시
     
 <br></br>
 
-**3.**
+**3. 필드 주입 vs 생성자 주입**
 
-   필드 주입 vs 생성자  주입
+   
    
    - 필드 주입
-       ex) public class Service {
-               @Autowired
-               MemberRepository memberRepository;
-           }
+
+```java
+public class Service {
+
+    @Autowired
+    private MemberRepository memberRepository;
+    
+}
+```
 
    - 생성자 주입 
-'''java
+   
+```java
 public class Service {
+
+    @Autowired  // 생성자가 하나면 생략가능
     private final MemberRepository memberRepository;
-               
+    
     public Service(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
+    
 }
-'''
+```
+생성자 주입을 통해, 변경 불가능한 안전한 객체 생성이 가능하고,  'final' 키워드를 추가하면 컴파일 시점에 memberRepository를 설정하지 않은 오류를 체크할 수 있다.
+
+<br></br>
+
+
+**4. @RequiredargsConstructor 의 기능**
+
+
