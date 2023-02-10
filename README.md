@@ -164,6 +164,31 @@ public void 중복확인() throws Exception {
 
 
 
-**6. **
+**6. [JPA] Entity 상태와 Cascade 옵션**
+
+- Entity의 상태
+```
+1. Transient : 객체를 생성하고, 값을 주어도 JPA나 Hibernate가 그 객체에 관해 아무것도 모르는 상태이다. 즉, 데이터베이스와 매핑된 것이 아무것도 없다.
+2. Persistent : EntityManager를 통해 영속성 컨텍스트에 저장을 하고나서, 영속성 컨텍스트가 관리하는 상태가 된다. 
+3. Detached : 영속성 컨텍스트에 저장되었다가 분리된 상태로, 영속성 컨텍스트가 더이상 관리하지 않는 상태이다.
+4. Removed : Entity를 영속성 컨텍스트와 DB에서 삭제한 상태이다.
+```
+<br></br>
+- Cascade 옵션
+
+    : Parent와 Child 관계에만 적용할 수 있는 옵션으로, CascadeType.java에는 ALL, PERSIST, MERGE, REMOVE, REFRESH, DETACH 속성이 있다.
+
+- Cascade 사용 예시
+```java
+OneToMany (mappedBy = "order", cascade = CascadeType.ALL)
+```
+-> Parent Entity의 영속성을 Child Entity도 전이 받는다. 즉, 부모 엔티티를 통해 자식 엔티티의 생명주기가 관리된다.
+    
+    
+  
+
+
+
+
 
 
