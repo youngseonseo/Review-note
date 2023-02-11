@@ -292,10 +292,12 @@ public List<Test> testMethod( @PathVariable("idx") int id, @RequestParam(value="
 <br></br>
 
 
-**9. th:field **
+**9. [Thymeleaf] th:field**
 
 
-'''th:field ="*{필드 명}"``` 
+```
+th:field ="*{필드 명}"
+```
 
 설정을 통해 HTML 필드와 폼 객체에 포함된 필드를 연결할 수 있고, HTML 필드 값이 폼 객체의 해당 필드로 설정된다.
 
