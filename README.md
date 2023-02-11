@@ -187,6 +187,47 @@ OneToMany (mappedBy = "order", cascade = CascadeType.ALL)
     
   
 
+<br></br>
+<br></br>
+
+
+**7. table 태그, th 태그, tr 태그, td 태그**
+```
+ <table> : 표를 만드는 태그
+ <th> : table head의 약자로, 표의 제목을 쓰는 역할
+ <tr> : table row의 약자로, 표의 가로줄을 만드는 역할
+ <td> : table data의 약자로, 셀을 만드는 역할
+```
+
+<br></br>
+
+<예시>
+```html
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th> 이름 </th>
+        <th> 도시 </th>
+        <th> 주소 </th>
+        <th> 우편번호 </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.address?.city}"></td>
+        <td th:text="${member.address?.street}"></td>
+        <td th:text="${member.address?.zipcode}"></td>
+    </tr>
+    </tbody>
+</table>
+
+```
+  
+   
+        
+        
+        
 
 
 
