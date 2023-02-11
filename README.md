@@ -224,7 +224,77 @@ OneToMany (mappedBy = "order", cascade = CascadeType.ALL)
 
 ```
   
-   
+ 
+ 
+ 
+<br></br>
+<br></br>
+
+**8. @RequestParam vs @PathVariable**
+
+
+주로 사용하는 형태의 파라미터를 전달하는 경우
+```
+**Case 1.** http://xxxxx? index=1 & page=2
+**Case 2.** http://xxxxx/ index/1
+```
+**Case1** 의 경우, 파라미터의 값과 이름을 함께 전달하는 방식으로, 게시판 등에서 페이지 및 검색 정보를 함께 전달하는 방식을 사용할때 많이 사용한다.
+
+**---> @RequestParam 사용**
+<br></br>
+
+**Case2** 의 경우, REST API에서 값을 호출할 때 많이 사용한다.
+
+**---> @PathVariable 사용**
+
+
+<br></br>
+
+<예시>
+```java
+
+// @RequestParam 사용
+
+@GetMapping("/home")
+public String myHome( @RequestParam("name") String name, @RequestParam ("phone") phone ){
+    viewName( name, phone);
+}
+
+
+// @RequestParam의 파라미터가 많아지는 경우, Map 사용
+
+@GetMapping("/home")
+public String myHome( @RequestParam HashMap <String, String> paramMap ){
+    String data = param.get("name")
+}
+
+
+
+// @PathVariable
+
+@GetMapping("/home")
+public void myHome( @PathVariable("idx") int id ){
+    return viewName(id);
+}
+
+
+// 복합 사용
+@GetMapping("test")
+public List<Test> testMethod( @PathVariable("idx") int id, @RequestParam(value="date" ,required="false) Date userDate) {
+
+}
+
+```
+
+
+ 
+<br></br>
+<br></br>
+
+
+**9. th:field **
+
+
         
         
         
