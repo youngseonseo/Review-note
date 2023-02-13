@@ -423,3 +423,48 @@ User user3 = new User(1L, "user3", "1234", null); // @AllArgsConstructor
 ```
 
 
+
+<br></br>
+<br></br>
+
+**14. Stream.collect() 사용**
+
+Stream.collect()의 기능
+
+1. Stream의 아이템들을 List 또는 Set 자료형으로 변환
+2. Stream의 아이템들을 joining
+3. Stream의 아이템들을 Sorting하여 가장 큰 객체 리턴
+4. Stream의 아이템들의 평균값 리턴
+
+
+```java
+Stream<String> fruits = Stream.of("banana", "apple", "mango", "kiwi", "peach", "cherry", "lemon");
+Set<String> fruitSet = fruits.collect(Collectors.toSet());
+for (String s : fruitSet) {
+    System.out.println(s);
+}
+```
+
+
+<br></br>
+<br></br>
+
+
+**15. @Bean vs @Component**
+
+```
+@Bean : 개발자가 컨트롤이 불가능한 외부 라이브러리들을 Bean으로 등록하고 싶은 경우에 사용한다.
+
+@Component : 개발자가 직접 컨트롤이 가능한 Class들의 경우에는 @Component를 사용한다.
+```
+
+@Bean과 @Component는 각자 선언할 수 있는 타입이 정해져있어 해당 용도외에는 컴파일 에러를 발생시킨다.
+
+
+
+<br></br>
+<br></br>
+
+
+**16. **
+
