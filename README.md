@@ -350,7 +350,28 @@ public UserVO ajaxTest() throws Exception {
 <br></br>
 
 
+**11. @Valid**
 
+파라미터로 @RequestBody 앞에 @Valid를 작성하면, @RequestBody로 들어오는 객체에 대한 검증을 수행한다. 이 검증의 세부사항은 객체 안에 정의해놓아야 한다.
+
+```java
+public CreateMemberResponse saveMember(@RequestBody @Valid UserDto userDto){
+    Long id = memberService.join(userDto);
+    return new CreateMemberResponse(id);
+}
+```
+
+```java
+public class UserDto {
+
+    @NotNull
+    private String name;
+    
+    @Email
+    private String email;
+}
+```
+여기서는 @NotNull, @Email 형식을 갖추는지 @Valid가 검증한다.
 
 
         
