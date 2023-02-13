@@ -374,7 +374,14 @@ public class UserDto {
 여기서는 @NotNull, @Email 형식을 갖추는지 @Valid가 검증한다.
 
 
-        
+         
+<br></br>
+<br></br>
+
+
+**12. @Data**
+
+lombok의 어노테이션 @Data는 @Getter, @Setter, @RequiredArgsConstructor, @EqualsAndHashCode를 합쳐놓은 것과 같다. 
 
 
 
