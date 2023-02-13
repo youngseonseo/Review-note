@@ -307,6 +307,52 @@ th:field ="*{필드 명}"
 <br></br>
 <br></br>
 
+
+**10. @RequestBody vs @ResponseBody**
+<br></br>
+
+
+@RequestBody와 @ResponseBody는 스프링에서 비동기 처리를 할 때 사용하는 어노테이션이다.
+
+**클라이언트**에서 **서버**로 통신하는 메시지를 **요청 메시지**, **서버**에서 **클라이언트**로 통신하는 메시지를 **응답 메시지**라 한다.
+
+웹에서 화면 전환(새로고침) 없이 이루어지는 동작들은 대부분 **비동기 통신**으로 이루어진다.
+
+비동기 통신을 위해서는 클라이언트에서 서버에 요청 메시지를 보낼 때, 본문(요청 본문, requestBody)에 데이터를 담아서 보내야하고,
+
+서버에서 클라이언트에 응답 메시지를 보낼때, 본문(응답 본문, responseBody)에 데이터를 담아서 보내야 한다.
+
+```
+@RequestBody : 요청 본문에 담긴 값을 자바 객체로 변환시켜 객체에 저장한다.
+
+@ResponseBody : 자바 객체를 HTTP 응답 본문의 객체로 변환시켜 클라이언트로 전송한다.
+```
+
+* @RestController = @Controller + @ResponseBody
+
+
+```java
+@ResponseBody
+@RequestMapping(value = "/ajaxTest.do")
+public UserVO ajaxTest() throws Exception {
+
+  UserVO userVO = new UserVO();
+  userVO.setId("테스트");
+
+  return userVO;
+}
+```
+
+
+        
+ 
+<br></br>
+<br></br>
+
+
+
+
+
         
 
 
