@@ -479,5 +479,48 @@ for (String s : fruitSet) {
 <br></br>
 
 
-**16. **
+**16. @NoArgsConstructor(access=AccessLevel.PROETECTED)**
+
+
+protected : 다른 패키지에 소속된 클래스는 접근할 수 없는 클래스
+
+
+무분별한 객체 생성을 방지할 수 있다.  -> 기본 생성자 막고 싶은데. JPA 스펙상 PROTECTED로 열어두어야 한다.
+
+
+
+<br></br>
+<br></br>
+
+
+**17. @ToString**
+
+@ToString을 클래스에 사용하면 toString() 메소드를 자동으로 생성해준다. exclude 속성을 사용하면 특정 필드만 제외시킬 수 있다. @ToString(exclude="name")
+
+@ToString은 가급적 내부 필드만 
+
+```java
+@ToString(of={"id","name"})
+public class Team{
+  
+  private Long id;
+  private String name;
+
+}
+```
+
+```java
+
+System.out.println(Team);
+
+```
+Team(id=1,name="youngseon")
+
+클래스명(필드1명=필드1값,필드2명=필드2값,...) 식으로 출력
+
+
+
+
+
+
 
